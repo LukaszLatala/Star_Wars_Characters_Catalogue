@@ -13,7 +13,8 @@ const App = () => {
     async function fetchPeople() {
       let res = await fetch("https://swapi.dev/api/people");
       let data = await res.json();
-      setPeople(data);
+      setPeople(data.results);
+      setLoagind(false);
     }
 
     fetchPeople();
@@ -23,9 +24,9 @@ const App = () => {
 
   return (
     <>
-      {/* <Router>
+      <Router>
         <Navbar />
-        <Container>
+        <Container style={{ margin: 20 }}>
           {loading ? (
             <Dimmer active inverted>
               <Loader inverted> Loading</Loader>
@@ -36,12 +37,12 @@ const App = () => {
                 <Home />
               </Route>
               <Route exact path="/people">
-                <People />
+                <People data={people} showDetails={people} />
               </Route>
             </Switch>
           )}
         </Container>
-      </Router> */}
+      </Router>
     </>
   );
 };

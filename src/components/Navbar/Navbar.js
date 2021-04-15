@@ -6,7 +6,7 @@ export default function Navbar() {
     <Menu inverted>
       <Container>
         <Link to="/">
-          <Menu.Item name="Star wars API" />
+          <Menu.Item name="Star Wars Characters Catalogue" />
         </Link>
         <Link to="/people">
           <Menu.Item name="peope" />
