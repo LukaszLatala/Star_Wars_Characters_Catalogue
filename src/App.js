@@ -6,6 +6,7 @@ import People from "./components/People/People";
 import Home from "./components/Home/Home";
 import "./App.css";
 import NavHeader from "./components/Header/Header";
+import SingleCharacter from "./components/SingleCharacter/SingleCharacter";
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -37,11 +38,12 @@ const App = () => {
           ) : (
             <Switch>
               <Route exact path="/">
-                <Home />
+                <People data={people} />
               </Route>
-              <Route exact path="/people">
-                <People data={people} showDetails={people} />
-              </Route>
+              <Route
+                path="/singleCharacter/:name"
+                component={SingleCharacter}
+              ></Route>
             </Switch>
           )}
         </Container>

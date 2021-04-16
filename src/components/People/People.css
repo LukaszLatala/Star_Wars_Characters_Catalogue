@@ -1,22 +1,19 @@
-
-
+.header_item {
+    font-size: 40px;
+}
 .characters_wrapper{
 
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        
         text-align: center;
         justify-content: space-around;
         text-align: center;
         align-content: center;
-        
-        
-
 }
 
 .header_wrapper{
-
+    
         margin-bottom: 50px;
         text-align: center;
         align-content: center;
@@ -67,7 +64,7 @@ flex:1;
       
  }
  .show_details_button{
-    margin: 0 30px;
+    width: 200px;
      bottom: 1px;
 
      font-family: "Montserrat", sans-serif;
