@@ -1,0 +1,11 @@
+.App-header {
+    display: flex;
+    
+    background-color: #fff;
+  }
+  
+  .App-header-img {
+    width: 100vw;
+    height: 300px
+    
+  }

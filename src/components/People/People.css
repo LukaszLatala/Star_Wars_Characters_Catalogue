@@ -1,74 +1,77 @@
-.people{
-    text-align: center;
-    margin: 40px;
-    font-size: 32px;
-  
-}
-.card_container{
 
-    margin-top: 20px;
-}
-/* .loader{
-    display: inline-block;
-    height: 50px;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 7px 12px;
-    font-weight: 500;
-    background: none;
-    border: 2px solid #FFE81F;
-    color: #FFE81F;
-    cursor: pointer;
-    background-color: black;
-} */
 
- /* .card_component{
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    width: 400px;
-    border: 3px solid green;
+.characters_wrapper{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        text-align: center;
+        justify-content: space-around;
+        text-align: center;
+        align-content: center;
+        
+        
+
+}
+
+.header_wrapper{
+
+        margin-bottom: 50px;
+        text-align: center;
+        align-content: center;
+
+    }
+/* 
+    .card_wrapper{
+        display: grid;
+        text-align: center;
+        align-content: center;
+    } */
+    .ui{
+        display: flex;
+
+        flex: 1;
+        height: 150px;
+        text-align: center;
+        justify-content: center;
+        flex-basis: 1 1 100%;
+    }
+            
+    .content{
+flex:1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+.content > *{
+    flex: 1 1 100%;
+}
+
+ button {
+
+        align-self: flex-end;
+        height: 40px;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 20px;
+        font-weight: bold;
+        padding: 8px 14px;
+        font-weight: 500;
+        color: #FFE81F;
+        cursor: pointer;
+        background-color: black;
+        font-family: "Montserrat", sans-serif;
+       
+      
+ }
+ .show_details_button{
+    margin: 0 30px;
+     bottom: 1px;
+
+     font-family: "Montserrat", sans-serif;
+ }
+
+ 
     
-}  */
-.people_container{
-
-    font-weight: 900;
-
-    width: auto;
-    text-align: center;
-}
-
-.card_container{
-    
-    height: 250px;
-    background-color: white;
-    box-shadow: 0 20px 40px -5px rgba(#1e58ff, .3);
-}
-.header{
-padding: 10px;
-
-}
-/* .button{
-    margin-top: 40px;
-    color:#FFE81F;
-    background-color: black;
-} */
-
-.button {
-
-    max-width: 120px;
-    text-align: center;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 7px 12px;
-    font-weight: 500;
-    background: none;
-    border: 2px solid #FFE81F;
-    color: #FFE81F;
-    cursor: pointer;
-    background-color: black;
-  }
-  

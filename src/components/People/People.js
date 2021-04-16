@@ -1,35 +1,39 @@
 import React from "react";
-import { Card, Grid } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import "./People.css";
-import ShowDetails from "../ShowDatils/ShowDetails";
+
 export default function People({ data }) {
   return (
     <>
-      <div className="people_container">
-        <h1 className="people">People</h1>
-        <Grid columns={5}>
-          {data.map((people, i) => {
-            console.log(i);
-            return (
-              <Grid.Column key={i}>
-                <Card.Group className="card_container">
-                  <Card fluid color="black">
+      <div className="characters_wrapper">
+        <div className="header_wrapper">
+          <h1>Characters</h1>
+          <button>Add Characters</button>
+        </div>
+
+        <div className="card_wrapper">
+          {/* itemsPerRow={5} */}
+          <Card.Group>
+            {data.map((people, i) => {
+              return (
+                <div className="card">
+                  <Card color="red" key={i}>
                     <Card.Content>
-                      <Card.Header className="header">
-                        {people.name}
-                      </Card.Header>
+                      <Card.Header>{people.name}</Card.Header>
                       <Card.Description>
                         <p> Gender: {people.gender}</p>
                         <p> Birth year: {people.birth_year}</p>
                       </Card.Description>
-                      <button className="button">Show details</button>
+                      <button className="show_details_button">
+                        Show details
+                      </button>
                     </Card.Content>
                   </Card>
-                </Card.Group>
-              </Grid.Column>
-            );
-          })}
-        </Grid>
+                </div>
+              );
+            })}
+          </Card.Group>
+        </div>
       </div>
     </>
   );

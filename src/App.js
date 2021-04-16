@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, Dimmer, Loader } from "semantic-ui-react";
+import { Container, Dimmer, Header, Loader } from "semantic-ui-react";
 import People from "./components/People/People";
 import Home from "./components/Home/Home";
+import "./App.css";
+import NavHeader from "./components/Header/Header";
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -25,7 +27,8 @@ const App = () => {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
+        <NavHeader />
         <Container style={{ margin: 20 }}>
           {loading ? (
             <Dimmer active inverted>
