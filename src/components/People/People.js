@@ -9,7 +9,7 @@ export default function People(props) {
       <div className="characters_wrapper">
         <div className="header_wrapper">
           <h1 className="header_item">Characters</h1>
-          <button onClick={props.next}>Add Characters</button>
+          <button onClick={props.getNextPage}>Add Characters</button>
         </div>
 
         <div className="card_wrapper">
