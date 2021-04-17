@@ -21,11 +21,11 @@ class App2 extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
-      this.setState({
-        // people: [prevState, this.state.people],
-        people: [],
-        // films: [...new Set([...prevState.films, ...this.state.films])],
-      });
+      // this.setState({
+      // people: [prevState, this.state.people],
+      // people: [],
+      // films: [...new Set([...prevState.films, ...this.state.films])],
+      // });
 
       this.getdata();
     }
@@ -39,16 +39,18 @@ class App2 extends Component {
         `
       )
       .then((response) => {
-        console.log(response);
-        this.setState({
-          people: [...response.data.results],
-        });
+        // console.log(response);
+        this.setState((prevState) => ({
+          loadging: false,
+          people: [...prevState.people, ...response.data.results],
+        }));
       });
   };
   getNextPage = () => {
     // e.preventDefault();
     this.setState((prevState) => ({
       page: prevState.page + 1,
+      loadging: true,
       //   people: [prevState.people + this.state.people],
     }));
   };

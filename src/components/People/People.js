@@ -26,6 +26,8 @@ export default function People(props) {
                         <p> Gender: {gender}</p>
                         <p> Birth year: {birth_year}</p>
                       </Card.Description>
+                
+
 
                       <Link
                         to={{
