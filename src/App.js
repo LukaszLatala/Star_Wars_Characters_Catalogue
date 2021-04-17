@@ -10,6 +10,7 @@ import SingleCharacter from "./components/SingleCharacter/SingleCharacter";
 
 const App = () => {
   const [people, setPeople] = useState([]);
+  const [next, setNext] = useState(1);
   const [loading, setLoagind] = useState(true);
 
   useEffect(() => {
@@ -17,11 +18,22 @@ const App = () => {
       let res = await fetch("https://swapi.dev/api/people");
       let data = await res.json();
       setPeople(data.results);
+      setNext(data.next);
       setLoagind(false);
     }
 
     fetchPeople();
   }, []);
+
+  const loadData = () => {
+    setNext(next + 1);
+  };
+
+  // useEffect(() => {
+  //   loadData();
+  // }, [people]);
+
+  console.log("next", next);
 
   console.log("people", people);
 
@@ -38,7 +50,7 @@ const App = () => {
           ) : (
             <Switch>
               <Route exact path="/">
-                <People data={people} />
+                <People data={people} next={loadData} />
               </Route>
               <Route
                 path="/singleCharacter/:name"
