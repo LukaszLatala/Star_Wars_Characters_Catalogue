@@ -8,31 +8,33 @@ const SingleCharacter = (props) => {
   const { name, birth_year, height, films } = props.location.state;
   return (
     <>
-      <div className="container">
+      <div className="card_wrapper">
         <h1 className="header_item">Single Character</h1>
         <Link to="/">
           <button className="return_button">Return </button>
         </Link>
         <Card.Group>
-          <Card
-            fluid
-            color="red"
-            header={name}
-            className="singlelist_container"
-          >
-            <h1>{name}</h1>
-            <p>Age: {birth_year}</p>
-            <p>Height: {height}</p>
-            <p className="filmList">
-              {" "}
-              <strong> Films:</strong>
-            </p>
-            <ul>
-              {films.map((film) => (
-                <li>{film}</li>
-              ))}
-            </ul>
-          </Card>
+          <div className="card">
+            <Card
+              fluid
+              color="red"
+              header={name}
+              className="singlelist_container"
+            >
+              <h1>{name}</h1>
+              <p>Age: {birth_year}</p>
+              <p>Height: {height}</p>
+              <p className="filmList">
+                {" "}
+                <strong> Films:</strong>
+              </p>
+              <ul>
+                {films.map((film) => (
+                  <li>{film}</li>
+                ))}
+              </ul>
+            </Card>
+          </div>
         </Card.Group>
       </div>
     </>

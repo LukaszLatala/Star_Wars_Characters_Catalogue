@@ -1,63 +1,82 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar/Navbar";
+import React, { Component } from "react";
+import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, Dimmer, Header, Loader } from "semantic-ui-react";
+import { Container, Dimmer, Loader } from "semantic-ui-react";
 import People from "./components/People/People";
-// import Home from "./components/Home/Home";
 import "./App.css";
 import NavHeader from "./components/Header/Header";
 import SingleCharacter from "./components/SingleCharacter/SingleCharacter";
 
-const App = () => {
-  const [people, setPeople] = useState([]);
-  const [next, setNext] = useState([]);
-  const [loading, setLoagind] = useState(true);
+class App extends Component {
+  state = {
+    people: [],
+    page: 1,
+    loading: true,
+  };
 
-  useEffect(() => {
-    async function fetchPeople() {
-      let res = await fetch("https://swapi.dev/api/people");
-      let data = await res.json();
-      setPeople(data.results);
-      setNext();
-      setLoagind(false);
+  componentDidMount() {
+    setTimeout(() => {
+      this.getdata();
+    }, 1000);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.page !== this.state.page) {
+      setTimeout(() => {
+        this.getdata();
+      }, 1500);
     }
+  }
 
-    fetchPeople();
-  }, []);
+  getdata = () => {
+    axios
+      .get(
+        `
+          https://swapi.dev/api/people/?page=${this.state.page}
+        `
+      )
+      .then((response) => {
+        this.setState((prevState) => ({
+          loading: false,
+          people: [...prevState.people, ...response.data.results],
+        }));
+      });
+  };
+  getNextPage = () => {
+    this.setState((prevState) => ({
+      page: prevState.page + 1,
+      loading: true,
+    }));
+  };
 
-  // useEffect(() => {
-  //   loadData();
-  // }, [people]);
-
-  console.log("next", next);
-
-  console.log("people", people);
-
-  return (
-    <>
-      <Router>
-        {/* <Navbar /> */}
-        <NavHeader />
-        <Container style={{ margin: 20 }}>
-          {loading ? (
-            <Dimmer active inverted>
-              <Loader inverted> Loading</Loader>
-            </Dimmer>
-          ) : (
-            <Switch>
-              <Route exact path="/">
-                <People data={people} next={next} />
-              </Route>
-              <Route
-                path="/singleCharacter/:name"
-                component={SingleCharacter}
-              ></Route>
-            </Switch>
-          )}
-        </Container>
-      </Router>
-    </>
-  );
-};
+  render() {
+    return (
+      <>
+        <Router>
+          <NavHeader />
+          <Container style={{ margin: 20 }}>
+            {this.state.loading ? (
+              <Dimmer active inverted>
+                <Loader inverted> Loading</Loader>
+              </Dimmer>
+            ) : (
+              <Switch>
+                <Route exact path="/">
+                  <People
+                    data={this.state.people}
+                    getNextPage={this.getNextPage}
+                  />
+                </Route>
+                <Route
+                  path="/singleCharacter/:name"
+                  component={SingleCharacter}
+                ></Route>
+              </Switch>
+            )}
+          </Container>
+        </Router>
+      </>
+    );
+  }
+}
 
 export default App;

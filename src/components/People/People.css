@@ -19,12 +19,7 @@
         align-content: center;
 
     }
-/* 
-    .card_wrapper{
-        display: grid;
-        text-align: center;
-        align-content: center;
-    } */
+
     .ui{
         display: flex;
 
@@ -48,8 +43,9 @@ flex:1;
 
  button {
 
+
         align-self: flex-end;
-        height: 40px;
+        height: 0px;
         text-align: center;
         font-size: 16px;
         margin-top: 20px;
@@ -58,10 +54,16 @@ flex:1;
         font-weight: 500;
         color: #FFE81F;
         cursor: pointer;
+        width: 200px;
         background-color: black;
         font-family: "Montserrat", sans-serif;
        
       
+ }
+
+ .loader_button{
+     height: 50px;
+     font-family: "Montserrat", sans-serif;
  }
  .show_details_button{
     width: 200px;
