@@ -3,8 +3,6 @@ import { Card } from "semantic-ui-react";
 import "./People.css";
 import { Link } from "react-router-dom";
 
-
-
 export default function People(props) {
   return (
     <>
@@ -15,12 +13,11 @@ export default function People(props) {
             Load more Characters
           </button>
         </div>
-
-
         <div className="card_wrapper">
           <Card.Group>
-            {props.data.map((people, i) => {
+            {props.data.slice(0, props.number).map((people, i) => {
               const { height, films, name, gender, birth_year } = people;
+
               return (
                 <div className="card">
                   <Card color="red" key={i}>

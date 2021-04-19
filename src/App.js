@@ -12,6 +12,7 @@ class App extends Component {
     people: [],
     page: 1,
     loading: true,
+    number: 10,
   };
 
   componentDidMount() {
@@ -45,6 +46,7 @@ class App extends Component {
     this.setState((prevState) => ({
       page: prevState.page + 1,
       loading: true,
+      number: this.state.number + 5,
     }));
   };
 
@@ -63,6 +65,7 @@ class App extends Component {
                 <Route exact path="/">
                   <People
                     data={this.state.people}
+                    number={this.state.number}
                     getNextPage={this.getNextPage}
                   />
                 </Route>
