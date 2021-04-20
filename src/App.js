@@ -24,7 +24,7 @@ class App extends Component {
     if (prevState.page !== this.state.page) {
       setTimeout(() => {
         this.getdata();
-      }, 1500);
+      }, 3000);
     }
   }
 
@@ -50,30 +50,42 @@ class App extends Component {
     }));
   };
 
+  // restartData = () => {
+  //   this.setState({
+  //     page: 1,
+  //     people: [],
+  //     number: 10,
+  //   });
+  //   setTimeout(() => {
+  //     this.getdata();
+  //   }, 3000);
+  // };
+
   render() {
     return (
       <>
         <Router>
           <NavHeader />
           <Container style={{ margin: 20 }}>
-            {this.state.loading ? (
+            <Switch>
+              <Route exact path="/">
+                <People
+                  data={this.state.people}
+                  number={this.state.number}
+                  getNextPage={this.getNextPage}
+                  restart={this.restartData}
+                />
+              </Route>
+              <Route
+                path="/singleCharacter/:name"
+                component={SingleCharacter}
+              ></Route>
+            </Switch>
+
+            {this.state.loading && (
               <Dimmer active inverted>
                 <Loader inverted> Loading</Loader>
               </Dimmer>
-            ) : (
-              <Switch>
-                <Route exact path="/">
-                  <People
-                    data={this.state.people}
-                    number={this.state.number}
-                    getNextPage={this.getNextPage}
-                  />
-                </Route>
-                <Route
-                  path="/singleCharacter/:name"
-                  component={SingleCharacter}
-                ></Route>
-              </Switch>
             )}
           </Container>
         </Router>
